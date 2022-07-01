@@ -12,6 +12,7 @@ export class HeatmapComponent implements OnInit {
     [4815, 9476, 1888, 4777, 4788, 3686, 6654],
   ];
   public colors: any = {};
+  public colors_red_composed: any = {};
 
   constructor() {
     let onedimension: any = [];
@@ -20,11 +21,13 @@ export class HeatmapComponent implements OnInit {
     });
     onedimension.sort((a: number, b: number) => a - b);
     let max: number = onedimension[onedimension.length - 1];
-    let min: number = onedimension[0];
     onedimension.forEach((n: number) => {
       let r = Math.round((n * 255) / max);
       let rhex = this.numberToHex(r);
-      this.colors[n] = '#' + rhex + "00" + "00";
+      this.colors[n] = '#' + rhex + '0000';
+      let gb = 255 - r;
+      let gbhex = this.numberToHex(gb);
+      this.colors_red_composed[n] = '#ff' + gbhex + gbhex;
     });
   }
 
