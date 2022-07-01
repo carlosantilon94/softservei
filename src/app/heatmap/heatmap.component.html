@@ -1,0 +1,10 @@
+<p>heatmap works!</p>
+<table>
+    <tr *ngFor="let row of data">
+        <td *ngFor="let col of row">
+            <div [ngStyle]="{ 'background-color': colors[col] } ">
+                <span style="color: white;">{{col}}</span>
+            </div>
+        </td>
+    </tr>
+</table>
