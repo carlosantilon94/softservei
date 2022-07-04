@@ -1,20 +1,20 @@
 <h1>Version with red variation</h1>
 <table>
-    <tr *ngFor="let row of data">
-        <td *ngFor="let col of row">
-            <div [ngStyle]="{ 'background-color': getBackgroundColor(col) } ">
-                <span style="color: white;">{{col}}</span>
-            </div>
-        </td>
-    </tr>
+  <tr *ngFor="let row of data">
+    <td *ngFor="let col of row">
+      <div [ngStyle]="{ 'background-color': getBackgroundColor(col) }">
+        <span style="color: white">{{ col }}</span>
+      </div>
+    </td>
+  </tr>
 </table>
 <h1>Version with blue and green variation</h1>
 <table>
-    <tr *ngFor="let row of data">
-        <td *ngFor="let col of row">
-            <div [ngStyle]="{ 'background-color': getBackgroundColor(col,true)} ">
-                <span>{{col}}</span>
-            </div>
-        </td>
-    </tr>
+  <tr *ngFor="let row of data">
+    <td *ngFor="let col of row">
+      <div [ngStyle]="{ 'background-color': getBackgroundColor(col, true) }">
+        <span>{{ col }}</span>
+      </div>
+    </td>
+  </tr>
 </table>
