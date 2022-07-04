@@ -11,24 +11,15 @@ export class HeatmapComponent implements OnInit {
     [3695, 7896, 9696, 3333, 4747, 7878, 1414],
     [4815, 9476, 1888, 4777, 4788, 3686, 6654],
   ];
-  public colors: any = {};
-  public colors_red_composed: any = {};
+  private max: number;
+  private min: number;
 
   constructor() {
     let onedimension: any = [];
-    this.data.forEach((element) => {
-      onedimension.push(...element);
-    });
+    onedimension = this.data.flat();
     onedimension.sort((a: number, b: number) => a - b);
-    let max: number = onedimension[onedimension.length - 1];
-    onedimension.forEach((n: number) => {
-      let r = Math.round((n * 255) / max);
-      let rhex = this.numberToHex(r);
-      this.colors[n] = '#' + rhex + '0000';
-      let gb = 255 - r;
-      let gbhex = this.numberToHex(gb);
-      this.colors_red_composed[n] = '#ff' + gbhex + gbhex;
-    });
+    this.max = onedimension[onedimension.length - 1];
+    this.min = onedimension[0];
   }
 
   ngOnInit(): void {}
@@ -36,5 +27,12 @@ export class HeatmapComponent implements OnInit {
   private numberToHex(c: number): string {
     let hex = c.toString(16);
     return hex.length == 1 ? '0' + hex : hex;
+  }
+
+  public getBackgroundColor(n: number, variation?: boolean): string {
+    let colorRed = Math.round((n - this.min) / ((this.max - this.min) / 255));
+    let colorGreenBlue = this.numberToHex(255 - colorRed);
+    if (variation) return '#' + 'ff' + colorGreenBlue + colorGreenBlue;
+    else return '#' + this.numberToHex(colorRed) + '0000';
   }
 }

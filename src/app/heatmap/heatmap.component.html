@@ -2,7 +2,7 @@
 <table>
     <tr *ngFor="let row of data">
         <td *ngFor="let col of row">
-            <div [ngStyle]="{ 'background-color': colors[col] } ">
+            <div [ngStyle]="{ 'background-color': getBackgroundColor(col) } ">
                 <span style="color: white;">{{col}}</span>
             </div>
         </td>
@@ -12,7 +12,7 @@
 <table>
     <tr *ngFor="let row of data">
         <td *ngFor="let col of row">
-            <div [ngStyle]="{ 'background-color': colors_red_composed[col] } ">
+            <div [ngStyle]="{ 'background-color': getBackgroundColor(col,true)} ">
                 <span>{{col}}</span>
             </div>
         </td>
