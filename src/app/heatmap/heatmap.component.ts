@@ -15,7 +15,7 @@ export class HeatmapComponent implements OnInit {
   private min: number;
 
   constructor() {
-    let onedimension: any = [];
+    let onedimension: number[] = [];
     onedimension = this.data.flat();
     onedimension.sort((a: number, b: number) => a - b);
     this.max = onedimension[onedimension.length - 1];
